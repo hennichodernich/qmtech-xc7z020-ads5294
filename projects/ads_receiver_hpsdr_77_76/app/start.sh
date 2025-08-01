@@ -4,7 +4,7 @@ apps_dir=/media/mmcblk0p1/apps
 
 source $apps_dir/stop.sh
 
-cat $apps_dir/sdr_receiver_hpsdr_77_76/sdr_receiver_hpsdr_77_76.bit > /dev/xdevcfg
+cat $apps_dir/ads_receiver_hpsdr_77_76/ads_receiver_hpsdr_77_76.bit > /dev/xdevcfg
 
 $apps_dir/common_tools/reset-adc.sh
 echo 568 > /sys/class/gpio/export
@@ -23,5 +23,5 @@ echo 2 > /proc/sys/net/ipv4/conf/all/rp_filter
 
 ip link add mvl0 link eth0 address $address type macvlan mode passthru
 
-$apps_dir/sdr_receiver_hpsdr_77_76/sdr-receiver-hpsdr eth0 &
-$apps_dir/sdr_receiver_hpsdr_77_76/sdr-receiver-hpsdr mvl0 &
+$apps_dir/ads_receiver_hpsdr_77_76/sdr-receiver-hpsdr eth0 &
+$apps_dir/ads_receiver_hpsdr_77_76/sdr-receiver-hpsdr mvl0 &
