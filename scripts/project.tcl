@@ -9,7 +9,7 @@ file delete -force tmp/$project_name.cache tmp/$project_name.gen tmp/$project_na
 
 create_project -part $part_name $project_name tmp
 
-set_property IP_REPO_PATHS tmp/cores [current_project]
+set_property IP_REPO_PATHS {tmp/cores tmp/vhdlcores} [current_project]
 
 update_ip_catalog
 

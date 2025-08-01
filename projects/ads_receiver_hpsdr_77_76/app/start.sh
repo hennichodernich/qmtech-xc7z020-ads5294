@@ -6,8 +6,14 @@ source $apps_dir/stop.sh
 
 cat $apps_dir/sdr_receiver_hpsdr_77_76/sdr_receiver_hpsdr_77_76.bit > /dev/xdevcfg
 
+$apps_dir/common_tools/reset-adc.sh
+echo 568 > /sys/class/gpio/export
+echo out > /sys/class/gpio/gpio568/direction
 $apps_dir/common_tools/setup-adc
-$apps_dir/common_tools/enable-adc.sh
+$apps_dir/common_tools/setup-adc t
+echo 1 > /sys/class/gpio/gpio568/value
+echo 0 > /sys/class/gpio/gpio568/value
+$apps_dir/common_tools/setup-adc n
 
 address=`awk -F : '$5="FF"' OFS=: /sys/class/net/eth0/address`
 
